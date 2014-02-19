@@ -1,2 +1,2 @@
-sic-sdk-java
+System in Cloud SDK for Java
 ============
