@@ -13,6 +13,8 @@
     </parent>
 
     <dependencies>
+        <dependency><groupId>com.systemincloud.sdk.java</groupId><artifactId>com.systemincloud.sdk.java.msg</artifactId>    </dependency>
+        <dependency><groupId>com.systemincloud.sdk.java</groupId><artifactId>com.systemincloud.sdk.java.machine</artifactId></dependency>
     </dependencies>
 
 </project>

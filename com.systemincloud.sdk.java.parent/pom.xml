@@ -21,6 +21,9 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency><groupId>com.systemincloud.sdk.java</groupId><artifactId>com.systemincloud.sdk.java.msg</artifactId>        <version>${project.version}</version></dependency>
+            <dependency><groupId>com.systemincloud.sdk.java</groupId><artifactId>com.systemincloud.sdk.java.machine</artifactId>    <version>${project.version}</version></dependency>
+            <dependency><groupId>com.systemincloud.sdk.java</groupId><artifactId>com.systemincloud.sdk.java.machine.msg</artifactId><version>${project.version}</version></dependency>
         </dependencies>
     </dependencyManagement>
 
