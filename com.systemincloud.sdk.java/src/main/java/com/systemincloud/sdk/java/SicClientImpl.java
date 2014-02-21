@@ -38,8 +38,8 @@ public class SicClientImpl implements SicClient {
     @Override public TestConnectionRsp testConnection() {
         TestConnectionRsp ret;
         try {
-            ret = service.path(PATH).path(TestConnectionReq.class.toString().toLowerCase()).request(MediaType.APPLICATION_JSON)
-                                                                            .post(Entity.entity(new TestConnectionReq(credentials), MediaType.APPLICATION_JSON), TestConnectionRsp.class);
+            ret = service.path(PATH).path("test-connection").request(MediaType.APPLICATION_JSON)
+                                                            .post(Entity.entity(new TestConnectionReq(credentials), MediaType.APPLICATION_JSON), TestConnectionRsp.class);
         } catch(Exception e) { ret = new TestConnectionRsp(false, e.getMessage()); }
         return ret;
     }
