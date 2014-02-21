@@ -1,5 +1,7 @@
 package com.systemincloud.sdk.java;
 
-public interface SicClient {
+import com.systemincloud.sdk.java.msg.TestConnectionRsp;
 
+public interface SicClient {
+    TestConnectionRsp testConnection();
 }

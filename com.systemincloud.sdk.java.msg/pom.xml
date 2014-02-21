@@ -13,6 +13,10 @@
     </parent>
 
     <dependencies>
-    </dependencies>
+        <dependency><groupId>org.eclipse.persistence</groupId>  <artifactId>org.eclipse.persistence.moxy</artifactId>              </dependency>
+        <dependency><groupId>org.glassfish.jersey.core</groupId> <artifactId>jersey-client</artifactId>         <scope>test</scope></dependency>
+        <dependency><groupId>org.glassfish.jersey.media</groupId><artifactId>jersey-media-multipart</artifactId><scope>test</scope></dependency>
+        <dependency><groupId>org.glassfish.jersey.media</groupId><artifactId>jersey-media-moxy</artifactId>     <scope>test</scope></dependency>
+     </dependencies>
 
 </project>

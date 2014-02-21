@@ -15,6 +15,11 @@
     <dependencies>
         <dependency><groupId>com.systemincloud.sdk.java</groupId><artifactId>com.systemincloud.sdk.java.msg</artifactId>    </dependency>
         <dependency><groupId>com.systemincloud.sdk.java</groupId><artifactId>com.systemincloud.sdk.java.machine</artifactId></dependency>
+        <dependency><groupId>org.glassfish.jersey.core</groupId> <artifactId>jersey-client</artifactId>                     </dependency>
+        <dependency><groupId>org.glassfish.jersey.media</groupId><artifactId>jersey-media-multipart</artifactId>            </dependency>
+        <dependency><groupId>org.glassfish.jersey.media</groupId><artifactId>jersey-media-moxy</artifactId>                 </dependency>
+        <dependency><groupId>org.eclipse.persistence</groupId>   <artifactId>org.eclipse.persistence.moxy</artifactId>      </dependency>
+        <dependency><groupId>org.eclipse.persistence</groupId>   <artifactId>org.eclipse.persistence.antlr</artifactId>     </dependency>
     </dependencies>
 
 </project>

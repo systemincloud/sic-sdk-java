@@ -25,8 +25,15 @@
             <dependency><groupId>com.systemincloud.sdk.java</groupId><artifactId>com.systemincloud.sdk.java.msg</artifactId>        <version>${project.version}</version>     </dependency>
             <dependency><groupId>com.systemincloud.sdk.java</groupId><artifactId>com.systemincloud.sdk.java.machine</artifactId>    <version>${project.version}</version>     </dependency>
             <dependency><groupId>com.systemincloud.sdk.java</groupId><artifactId>com.systemincloud.sdk.java.machine.msg</artifactId><version>${project.version}</version>     </dependency>
+            <!-- Jersey -->
+            <dependency><groupId>org.glassfish.jersey.core</groupId> <artifactId>jersey-client</artifactId>                         <version>2.6</version>                    </dependency>
+            <dependency><groupId>org.glassfish.jersey.media</groupId><artifactId>jersey-media-multipart</artifactId>                <version>2.6</version>                    </dependency>
+            <dependency><groupId>org.glassfish.jersey.media</groupId><artifactId>jersey-media-moxy</artifactId>                     <version>2.6</version>                    </dependency>
             <!-- Test -->
             <dependency><groupId>junit</groupId>                     <artifactId>junit</artifactId>                                 <version>4.11</version><scope>test</scope></dependency>
+            <!-- Others -->
+            <dependency><groupId>org.eclipse.persistence</groupId>   <artifactId>org.eclipse.persistence.moxy</artifactId>          <version>2.5.1</version>                  </dependency>
+            <dependency><groupId>org.eclipse.persistence</groupId>   <artifactId>org.eclipse.persistence.antlr</artifactId>         <version>2.5.1</version>                  </dependency>
         </dependencies>
     </dependencyManagement>
 
