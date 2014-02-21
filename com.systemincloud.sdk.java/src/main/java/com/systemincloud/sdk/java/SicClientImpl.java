@@ -35,6 +35,12 @@ public class SicClientImpl implements SicClient {
         return client.target("https://connector.systemincloud.com");
     }
 
-    @Override public TestConnectionRsp testConnection() { return service.path(PATH).path(TestConnectionReq.class.toString().toLowerCase()).request(MediaType.APPLICATION_JSON)
-                                                                        .post(Entity.entity(new TestConnectionReq(credentials), MediaType.APPLICATION_JSON), TestConnectionRsp.class); }
+    @Override public TestConnectionRsp testConnection() {
+        TestConnectionRsp ret;
+        try {
+            ret = service.path(PATH).path(TestConnectionReq.class.toString().toLowerCase()).request(MediaType.APPLICATION_JSON)
+                                                                            .post(Entity.entity(new TestConnectionReq(credentials), MediaType.APPLICATION_JSON), TestConnectionRsp.class);
+        } catch(Exception e) { ret = new TestConnectionRsp(false, e.getMessage()); }
+        return ret;
+    }
 }
