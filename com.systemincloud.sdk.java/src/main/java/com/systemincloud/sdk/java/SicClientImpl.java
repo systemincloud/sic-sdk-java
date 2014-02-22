@@ -21,9 +21,13 @@ public class SicClientImpl implements SicClient {
     
     protected WebTarget service;
     
+    protected boolean testPassed;
+    public    boolean isTestPassed() {return testPassed; }
+    
     public SicClientImpl(String accountNumber, String systemName, String systemKey) {
         this.credentials = new Credentials(accountNumber, systemName, systemKey);
         this.service = initRestClient();
+        this.testPassed = testConnection().getStatus();
     }
 
     private WebTarget initRestClient() {
