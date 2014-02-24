@@ -1,5 +1,7 @@
 package com.systemincloud.sdk.java;
 
+import java.util.List;
+
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -10,6 +12,9 @@ import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 
 import com.systemincloud.sdk.java.msg.Credentials;
+import com.systemincloud.sdk.java.msg.GetMachinesReq;
+import com.systemincloud.sdk.java.msg.GetMachinesRsp;
+import com.systemincloud.sdk.java.msg.MachineInfo;
 import com.systemincloud.sdk.java.msg.TestConnectionReq;
 import com.systemincloud.sdk.java.msg.TestConnectionRsp;
 
@@ -42,9 +47,14 @@ public class SicClientImpl implements SicClient {
     @Override public TestConnectionRsp testConnection() {
         TestConnectionRsp ret;
         try {
-            ret = service.path(PATH).path("test-connection").request(MediaType.APPLICATION_JSON)
-                                                            .post(Entity.entity(new TestConnectionReq(credentials), MediaType.APPLICATION_JSON), TestConnectionRsp.class);
+            ret = service.path(PATH).path("testConnection").request(MediaType.APPLICATION_JSON)
+                                                           .post(Entity.entity(new TestConnectionReq(credentials), MediaType.APPLICATION_JSON), TestConnectionRsp.class);
         } catch(Exception e) { ret = new TestConnectionRsp(false, e.getMessage()); }
         return ret;
+    }
+
+    @Override public List<MachineInfo> getMachines() {
+        return service.path(PATH).path("getMachines").request(MediaType.APPLICATION_JSON)
+                                                     .post(Entity.entity(new GetMachinesReq(credentials), MediaType.APPLICATION_JSON), GetMachinesRsp.class).getMachines();
     }
 }
