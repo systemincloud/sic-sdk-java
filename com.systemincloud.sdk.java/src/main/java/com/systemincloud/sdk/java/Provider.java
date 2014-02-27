@@ -1,4 +1,4 @@
-package com.systemincloud.sdk.java.msg;
+package com.systemincloud.sdk.java;
 
 public enum Provider {
     AWS  ("Amazon Web Services"), 

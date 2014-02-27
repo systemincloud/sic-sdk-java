@@ -1,4 +1,4 @@
-package com.systemincloud.sdk.java.msg;
+package com.systemincloud.sdk.java;
 
 import java.util.LinkedList;
 import java.util.List;
