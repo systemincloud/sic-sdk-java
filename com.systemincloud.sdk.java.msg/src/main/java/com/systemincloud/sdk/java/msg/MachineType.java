@@ -46,6 +46,8 @@ public enum MachineType {
     AZURE_A5("A5"),
     AZURE_A6("A6"),
     AZURE_A7("A7"),
+    AZURE_A8("A8"),
+    AZURE_A9("A9"),
     
     // GCE
     GCE_N1_STANDARD_1("n1-standard-1"),
