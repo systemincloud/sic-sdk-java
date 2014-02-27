@@ -1,8 +1,12 @@
 package com.systemincloud.sdk.java.msg;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public enum MachineType {
     DEFAULT("default"),
     
+    // AWS
     AWS_M3_MEDIUM("m3.medium"),
     AWS_M3_LARGE("m3.large"),
     AWS_M3_XLARGE("m3.xlarge"),
@@ -33,6 +37,7 @@ public enum MachineType {
     AWS_HI1_4XLARGE("hi1.4xlarge"),
     AWS_T1_MICRO("t1.micro"),
 
+    // AZURE
     AZURE_EXTRA_SMALL("Extra Small"),
     AZURE_SMALL("Small"),
     AZURE_MEDIUM("Medium"),
@@ -42,6 +47,7 @@ public enum MachineType {
     AZURE_A6("A6"),
     AZURE_A7("A7"),
     
+    // GCE
     GCE_N1_STANDARD_1("n1-standard-1"),
     GCE_N1_STANDARD_2("n1-standard-2"),
     GCE_N1_STANDARD_4("n1-standard-4"),
@@ -70,5 +76,12 @@ public enum MachineType {
         for(MachineType mt : MachineType.values())
             if(mt.getName().equals(name)) return mt;
         return null;
+    }
+    
+    public static List<MachineType> getForProvider(Provider provider) {
+        List<MachineType> machineTypes = new LinkedList<>();
+        for(MachineType mt : MachineType.values())
+            if(mt.toString().startsWith(provider.toString())) machineTypes.add(mt);
+        return machineTypes;
     }
 }

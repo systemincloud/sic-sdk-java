@@ -1,5 +1,8 @@
 package com.systemincloud.sdk.java.msg;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public enum Region {
     DEFAULT("default"),
     
@@ -13,7 +16,7 @@ public enum Region {
     AWS_AP_NORTHEAST_2("ap-northeast-1"),
     AWS_SA_EAST_1("sa-east-1"),
     
-    //AZURE
+    // AZURE
     AZURE_US_EAST("US East"),
     AZURE_US_WEST("US West"),  
     AZURE_US_NORTH_CENTRAL("US North Central"),  
@@ -25,9 +28,7 @@ public enum Region {
     AZURE_JAPAN_EAST("Japan East"),
     AZURE_JAPAN_WEST("Japan West"),
         
-    AZURE_WEST_US("West US"), 
-
-    //GCE
+    // GCE
     GCE_EUROPE_WEST1("europe-west1"),
     GCE_US_CENTRAL1("us-central1");
     
@@ -43,5 +44,12 @@ public enum Region {
         for(Region r : Region.values())
             if(r.getName().equals(name)) return r;
         return null;
+    }
+    
+    public static List<Region> getForProvider(Provider provider) {
+        List<Region> regions = new LinkedList<>();
+        for(Region r : Region.values())
+            if(r.toString().startsWith(provider.toString())) regions.add(r);
+        return regions;
     }
 }
