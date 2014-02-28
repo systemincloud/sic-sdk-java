@@ -11,4 +11,5 @@ public interface SicClient {
     List<MachineInfo> getMachines();
     void              newMachine(Region region, MachineType machineType);
     void              newMachine(String region, String machineType);
+    void              deleteMachine(String machineId);
 }

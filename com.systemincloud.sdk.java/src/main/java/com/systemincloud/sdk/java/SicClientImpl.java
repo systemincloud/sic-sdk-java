@@ -12,6 +12,8 @@ import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 
 import com.systemincloud.sdk.java.msg.Credentials;
+import com.systemincloud.sdk.java.msg.DeleteMachineReq;
+import com.systemincloud.sdk.java.msg.DeleteMachineRsp;
 import com.systemincloud.sdk.java.msg.GetMachinesReq;
 import com.systemincloud.sdk.java.msg.GetMachinesRsp;
 import com.systemincloud.sdk.java.msg.MachineInfo;
@@ -65,6 +67,12 @@ public class SicClientImpl implements SicClient {
     @Override public void newMachine(String region, String machineType) {
         NewMachineRsp response = service.path(PATH).path("newMachine").request(MediaType.APPLICATION_JSON)
                                                                       .post(Entity.entity(new NewMachineReq(credentials, region, machineType), MediaType.APPLICATION_JSON), NewMachineRsp.class);
+        if(!response.getStatus()) throw new SicException(response.getCause());
+    }
+
+    @Override public void deleteMachine(String machineId) {
+        DeleteMachineRsp response = service.path(PATH).path("deleteMachine").request(MediaType.APPLICATION_JSON)
+                                                      .post(Entity.entity(new DeleteMachineReq(credentials, machineId), MediaType.APPLICATION_JSON), DeleteMachineRsp.class);
         if(!response.getStatus()) throw new SicException(response.getCause());
     }
 }
