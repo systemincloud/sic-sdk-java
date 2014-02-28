@@ -16,4 +16,7 @@ public class NewMachineReq extends Request {
         this.region = region;
         this.machineType = machineType;
     }
+    
+    public String getRegion()      { return region; }
+    public String getMachineType() { return machineType; }
 }
