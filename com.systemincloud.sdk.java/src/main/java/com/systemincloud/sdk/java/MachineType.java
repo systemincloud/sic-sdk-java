@@ -86,4 +86,57 @@ public enum MachineType {
             if(mt.toString().startsWith(provider.toString())) machineTypes.add(mt);
         return machineTypes;
     }
+    
+    public static List<MachineType> getForRegion(Region region) {
+        List<MachineType> machineTypes = new LinkedList<>();
+        if(region.toString().startsWith("AWS_")) {
+            for(MachineType mt : MachineType.values()) {
+                if(Region.AWS_US_WEST_2.equals(region) && MachineType.AWS_CG1_4XLARGE.equals(mt)) continue;
+                
+                if(Region.AWS_US_WEST_1.equals(region) && (MachineType.AWS_HI1_4XLARGE.equals(mt)
+                                                        || MachineType.AWS_HS1_8XLARGE.equals(mt)
+                                                        || MachineType.AWS_CR1_8XLARGE.equals(mt)
+                                                        || MachineType.AWS_CC2_8XLARGE.equals(mt)
+                                                        || MachineType.AWS_CG1_4XLARGE.equals(mt))) continue;
+                
+                if(Region.AWS_AP_SOUTHEAST_1.equals(region) && (MachineType.AWS_HI1_4XLARGE.equals(mt)
+                                                             || MachineType.AWS_CR1_8XLARGE.equals(mt)
+                                                             || MachineType.AWS_CG1_4XLARGE.equals(mt)
+                                                             || MachineType.AWS_G2_2XLARGE.equals(mt)
+                                                             || MachineType.AWS_CC2_8XLARGE.equals(mt))) continue;
+                
+                if(Region.AWS_AP_NORTHEAST_1.equals(region) && MachineType.AWS_CG1_4XLARGE.equals(mt)) continue;
+                
+                if(Region.AWS_AP_SOUTHEAST_2.equals(region) && (MachineType.AWS_HI1_4XLARGE.equals(mt)
+                                                             || MachineType.AWS_CR1_8XLARGE.equals(mt)
+                                                             || MachineType.AWS_CG1_4XLARGE.equals(mt)
+                                                             || MachineType.AWS_G2_2XLARGE.equals(mt)
+                                                             || MachineType.AWS_CC2_8XLARGE.equals(mt))) continue;
+                
+                if(Region.AWS_SA_EAST_1.equals(region) && (MachineType.AWS_HI1_4XLARGE.equals(mt)
+                                                        || MachineType.AWS_HS1_8XLARGE.equals(mt)
+                                                        || MachineType.AWS_CR1_8XLARGE.equals(mt)
+                                                        || MachineType.AWS_CG1_4XLARGE.equals(mt)
+                                                        || MachineType.AWS_G2_2XLARGE.equals(mt)
+                                                        || MachineType.AWS_CC2_8XLARGE.equals(mt)
+                                                        || MachineType.AWS_C3_LARGE.equals(mt)
+                                                        || MachineType.AWS_C3_XLARGE.equals(mt)
+                                                        || MachineType.AWS_C3_2XLARGE.equals(mt)
+                                                        || MachineType.AWS_C3_4XLARGE.equals(mt)
+                                                        || MachineType.AWS_C3_8XLARGE.equals(mt)
+                                                        || MachineType.AWS_I2_XLARGE.equals(mt)
+                                                        || MachineType.AWS_I2_2XLARGE.equals(mt)
+                                                        || MachineType.AWS_I2_4XLARGE.equals(mt)
+                                                        || MachineType.AWS_I2_8XLARGE.equals(mt))) continue;
+                if(mt.toString().startsWith("AWS")) machineTypes.add(mt);
+            }
+        } else if(region.toString().startsWith("AZURE_")) {
+            for(MachineType mt : MachineType.values())
+                if(mt.toString().startsWith("AZURE_")) machineTypes.add(mt);
+        } else if(region.toString().startsWith("GCE_")) { 
+            for(MachineType mt : MachineType.values())
+                if(mt.toString().startsWith("GCE_")) machineTypes.add(mt);
+        }
+        return machineTypes;
+    }
 }

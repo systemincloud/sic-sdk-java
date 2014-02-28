@@ -1,6 +1,8 @@
 package com.systemincloud.sdk.java;
 
 public enum Provider {
+    DEFAULT("default"),
+    
     AWS  ("Amazon Web Services"), 
     AZURE("Windows Azure"), 
     GCE  ("Google Cloud Engine");

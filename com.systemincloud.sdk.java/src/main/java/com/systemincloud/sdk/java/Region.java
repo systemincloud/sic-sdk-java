@@ -13,7 +13,7 @@ public enum Region {
     AWS_EU_WEST_1("eu-west-1"),
     AWS_AP_SOUTHEAST_1("ap-southeast-1"),
     AWS_AP_SOUTHEAST_2("ap-southeast-2"),
-    AWS_AP_NORTHEAST_2("ap-northeast-1"),
+    AWS_AP_NORTHEAST_1("ap-northeast-1"),
     AWS_SA_EAST_1("sa-east-1"),
     
     // AZURE
