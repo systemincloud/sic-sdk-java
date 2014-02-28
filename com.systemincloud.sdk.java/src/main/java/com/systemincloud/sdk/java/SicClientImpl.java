@@ -15,6 +15,8 @@ import com.systemincloud.sdk.java.msg.Credentials;
 import com.systemincloud.sdk.java.msg.GetMachinesReq;
 import com.systemincloud.sdk.java.msg.GetMachinesRsp;
 import com.systemincloud.sdk.java.msg.MachineInfo;
+import com.systemincloud.sdk.java.msg.NewMachineReq;
+import com.systemincloud.sdk.java.msg.NewMachineRsp;
 import com.systemincloud.sdk.java.msg.TestConnectionReq;
 import com.systemincloud.sdk.java.msg.TestConnectionRsp;
 
@@ -56,5 +58,13 @@ public class SicClientImpl implements SicClient {
     @Override public List<MachineInfo> getMachines() {
         return service.path(PATH).path("getMachines").request(MediaType.APPLICATION_JSON)
                                                      .post(Entity.entity(new GetMachinesReq(credentials), MediaType.APPLICATION_JSON), GetMachinesRsp.class).getMachines();
+    }
+
+    @Override public void newMachine(Region region, MachineType machineType) { newMachine(region.getName(), machineType.getName()); }
+
+    @Override public void newMachine(String region, String machineType) {
+        NewMachineRsp response = service.path(PATH).path("newMachine").request(MediaType.APPLICATION_JSON)
+                                                                      .post(Entity.entity(new NewMachineReq(credentials, region, machineType), MediaType.APPLICATION_JSON), NewMachineRsp.class);
+        if(!response.getStatus()) throw new SicException(response.getCause());
     }
 }
