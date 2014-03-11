@@ -31,7 +31,7 @@ public class SicClientImpl implements SicClient {
     protected WebTarget service;
     
     protected boolean testPassed;
-    public    boolean isTestPassed() {return testPassed; }
+    public    boolean isTestPassed() { return testPassed; }
     
     public SicClientImpl(String accountNumber, String systemName, String systemKey) {
         this.credentials = new Credentials(accountNumber, systemName, systemKey);
@@ -39,7 +39,7 @@ public class SicClientImpl implements SicClient {
         this.testPassed = testConnection().getStatus();
     }
 
-    private WebTarget initRestClient() {
+    protected WebTarget initRestClient() {
         ClientConfig config = new ClientConfig();
         config.register(MultiPartFeature.class);
         Client client = ClientBuilder.newBuilder()
