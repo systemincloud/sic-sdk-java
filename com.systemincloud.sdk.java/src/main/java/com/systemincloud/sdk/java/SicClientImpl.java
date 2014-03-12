@@ -30,8 +30,11 @@ public class SicClientImpl implements SicClient {
     
     protected WebTarget service;
     
+    protected boolean serviceAvailable;
     protected boolean testPassed;
-    public    boolean isTestPassed() { return testPassed; }
+    
+    @Override public boolean isServiceAvailable() { return serviceAvailable; }
+    @Override public boolean isTestPassed()       { return testPassed; }
     
     public SicClientImpl(String accountNumber, String systemName, String systemKey) {
         this.credentials = new Credentials(accountNumber, systemName, systemKey);
@@ -53,7 +56,12 @@ public class SicClientImpl implements SicClient {
         try {
             ret = service.path(PATH).path("testConnection").request(MediaType.APPLICATION_JSON)
                                                            .post(Entity.entity(new TestConnectionReq(credentials), MediaType.APPLICATION_JSON), TestConnectionRsp.class);
-        } catch(Exception e) { ret = new TestConnectionRsp(false, e.getMessage()); }
+        } catch(Exception e) {
+            this.serviceAvailable = false;
+            ret = new TestConnectionRsp(false, e.getMessage());
+            return ret;
+        }
+        this.serviceAvailable = true;
         return ret;
     }
 

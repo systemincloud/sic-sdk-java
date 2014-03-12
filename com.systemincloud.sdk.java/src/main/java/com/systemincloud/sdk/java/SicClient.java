@@ -7,6 +7,7 @@ import com.systemincloud.sdk.java.msg.TestConnectionRsp;
 
 public interface SicClient {
     TestConnectionRsp testConnection();
+    boolean           isServiceAvailable();
     boolean           isTestPassed();
     List<MachineInfo> getMachines();
     void              newMachine(Region region, MachineType machineType);
