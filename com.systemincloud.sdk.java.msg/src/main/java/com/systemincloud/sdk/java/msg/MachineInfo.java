@@ -12,6 +12,7 @@ public class MachineInfo {
     @XmlElement private String machineType;
     @XmlElement private String publicDns;
     @XmlElement private String status;
+    @XmlElement private String modelerVersion;
     @XmlElement private int    averageCpu;
     @XmlElement private int    maxCpu;
     @XmlElement private int    averageRam;
@@ -19,24 +20,26 @@ public class MachineInfo {
     
     public MachineInfo() { }
     
-    public String getMachineId()                     { return machineId; }
-    public void   setMachineId(String machineId)     { this.machineId = machineId; }
-    public String getProvider()                      { return provider; }
-    public void   setProvider(String provider)       { this.provider = provider; }
-    public String getRegion()                        { return region; }
-    public void   setRegion(String region)           {   this.region = region; }
-    public String getMachineType()                   { return machineType; }
-    public void   setMachineType(String machineType) {   this.machineType = machineType; }
-    public String getPublicDns()                     { return publicDns; }  
-    public void   setPublicDns(String publicDns)     {  this.publicDns = publicDns; }
-    public String getStatus()                        { return status; } 
-    public void   setStatus(String status)           {   this.status = status; }
-    public int    getAverageCpu()                    { return averageCpu; } 
-    public void   setAverageCpu(int averageCpu)      {   this.averageCpu = averageCpu; }
-    public int    getMaxCpu()                        { return maxCpu; } 
-    public void   setMaxCpu(int maxCpu)              {   this.maxCpu = maxCpu; }
-    public int    getAverageRam()                    { return averageRam; } 
-    public void   setAverageRam(int averageRam)      {   this.averageRam = averageRam; }
-    public int    getMaxRam()                        { return maxRam; } 
-    public void   setMaxRam(int maxRam)              {   this.maxRam = maxRam; }
+    public String getMachineId()                           { return machineId; }
+    public void   setMachineId(String machineId)           { this.machineId = machineId; }
+    public String getProvider()                            { return provider; }
+    public void   setProvider(String provider)             { this.provider = provider; }
+    public String getRegion()                              { return region; }
+    public void   setRegion(String region)                 {   this.region = region; }
+    public String getMachineType()                         { return machineType; }
+    public void   setMachineType(String machineType)       {   this.machineType = machineType; }
+    public String getPublicDns()                           { return publicDns; }  
+    public void   setPublicDns(String publicDns)           {  this.publicDns = publicDns; }
+    public String getStatus()                              { return status; } 
+    public void   setStatus(String status)                 {   this.status = status; }
+    public String getModelerVersion()                      { return modelerVersion; } 
+    public void   setModelerVersion(String modelerVersion) {   this.modelerVersion = modelerVersion; }
+    public int    getAverageCpu()                          { return averageCpu; } 
+    public void   setAverageCpu(int averageCpu)            {   this.averageCpu = averageCpu; }
+    public int    getMaxCpu()                              { return maxCpu; } 
+    public void   setMaxCpu(int maxCpu)                    {   this.maxCpu = maxCpu; }
+    public int    getAverageRam()                          { return averageRam; } 
+    public void   setAverageRam(int averageRam)            {   this.averageRam = averageRam; }
+    public int    getMaxRam()                              { return maxRam; } 
+    public void   setMaxRam(int maxRam)                    {   this.maxRam = maxRam; }
 }
