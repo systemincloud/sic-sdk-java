@@ -70,12 +70,13 @@ public class SicClientImpl implements SicClient {
                                                      .post(Entity.entity(new GetMachinesReq(credentials), MediaType.APPLICATION_JSON), GetMachinesRsp.class).getMachines();
     }
 
-    @Override public void newMachine(Region region, MachineType machineType) { newMachine(region.getName(), machineType.getName()); }
+    @Override public MachineInfo newMachine(Region region, MachineType machineType) { return newMachine(region.getName(), machineType.getName()); }
 
-    @Override public void newMachine(String region, String machineType) {
+    @Override public MachineInfo newMachine(String region, String machineType) {
         NewMachineRsp response = service.path(PATH).path("newMachine").request(MediaType.APPLICATION_JSON)
                                                                       .post(Entity.entity(new NewMachineReq(credentials, region, machineType), MediaType.APPLICATION_JSON), NewMachineRsp.class);
         if(!response.getStatus()) throw new SicException(response.getCause());
+        else return response.getMachine();
     }
 
     @Override public void deleteMachine(String machineId) {

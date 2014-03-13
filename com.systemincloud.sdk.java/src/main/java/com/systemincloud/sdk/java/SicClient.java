@@ -10,7 +10,7 @@ public interface SicClient {
     boolean           isServiceAvailable();
     boolean           isTestPassed();
     List<MachineInfo> getMachines();
-    void              newMachine(Region region, MachineType machineType);
-    void              newMachine(String region, String machineType);
+    MachineInfo       newMachine(Region region, MachineType machineType);
+    MachineInfo       newMachine(String region, String machineType);
     void              deleteMachine(String machineId);
 }
