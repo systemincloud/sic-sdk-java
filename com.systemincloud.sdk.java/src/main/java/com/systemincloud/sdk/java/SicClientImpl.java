@@ -16,7 +16,10 @@ import com.systemincloud.sdk.java.msg.DeleteMachineReq;
 import com.systemincloud.sdk.java.msg.DeleteMachineRsp;
 import com.systemincloud.sdk.java.msg.GetMachinesReq;
 import com.systemincloud.sdk.java.msg.GetMachinesRsp;
+import com.systemincloud.sdk.java.msg.GetModelInfoReq;
+import com.systemincloud.sdk.java.msg.GetModelInfoRsp;
 import com.systemincloud.sdk.java.msg.MachineInfo;
+import com.systemincloud.sdk.java.msg.ModelInfo;
 import com.systemincloud.sdk.java.msg.NewMachineReq;
 import com.systemincloud.sdk.java.msg.NewMachineRsp;
 import com.systemincloud.sdk.java.msg.TestConnectionReq;
@@ -66,8 +69,10 @@ public class SicClientImpl implements SicClient {
     }
 
     @Override public List<MachineInfo> getMachines() {
-        return service.path(PATH).path("getMachines").request(MediaType.APPLICATION_JSON)
-                                                     .post(Entity.entity(new GetMachinesReq(credentials), MediaType.APPLICATION_JSON), GetMachinesRsp.class).getMachines();
+        GetMachinesRsp response = service.path(PATH).path("getMachines").request(MediaType.APPLICATION_JSON)
+                                                                        .post(Entity.entity(new GetMachinesReq(credentials), MediaType.APPLICATION_JSON), GetMachinesRsp.class);
+        if(!response.getStatus()) throw new SicException(response.getCause());
+        else return response.getMachines();
     }
 
     @Override public MachineInfo newMachine(Region region, MachineType machineType) { return newMachine(region.getName(), machineType.getName()); }
@@ -83,5 +88,12 @@ public class SicClientImpl implements SicClient {
         DeleteMachineRsp response = service.path(PATH).path("deleteMachine").request(MediaType.APPLICATION_JSON)
                                                       .post(Entity.entity(new DeleteMachineReq(credentials, machineId), MediaType.APPLICATION_JSON), DeleteMachineRsp.class);
         if(!response.getStatus()) throw new SicException(response.getCause());
+    }
+    
+    @Override public ModelInfo getModelInfo() {
+        GetModelInfoRsp response = service.path(PATH).path("getModelInfo").request(MediaType.APPLICATION_JSON)
+                                                                          .post(Entity.entity(new GetModelInfoReq(credentials), MediaType.APPLICATION_JSON), GetModelInfoRsp.class);
+        if(!response.getStatus()) throw new SicException(response.getCause());
+        else return response.getModelInfo();
     }
 }
