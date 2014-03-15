@@ -19,4 +19,5 @@ public interface SicClient {
     ModelInfo          getModelInfo();
     List<InstanceInfo> getInstances();
     InstanceInfo       newInstance(String machineId, Map<String, String> parameters);
+    void               deleteInstance(String instanceId);
 }
