@@ -15,6 +15,8 @@ import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import com.systemincloud.sdk.java.msg.Credentials;
 import com.systemincloud.sdk.java.msg.DeleteMachineReq;
 import com.systemincloud.sdk.java.msg.DeleteMachineRsp;
+import com.systemincloud.sdk.java.msg.GetInstancesReq;
+import com.systemincloud.sdk.java.msg.GetInstancesRsp;
 import com.systemincloud.sdk.java.msg.GetMachinesReq;
 import com.systemincloud.sdk.java.msg.GetMachinesRsp;
 import com.systemincloud.sdk.java.msg.GetModelInfoReq;
@@ -99,6 +101,13 @@ public class SicClientImpl implements SicClient {
                                                                           .post(Entity.entity(new GetModelInfoReq(credentials), MediaType.APPLICATION_JSON), GetModelInfoRsp.class);
         if(!response.getStatus()) throw new SicException(response.getCause());
         else return response.getModelInfo();
+    }
+    
+    @Override public List<InstanceInfo> getInstances() {
+        GetInstancesRsp response = service.path(PATH).path("getInstances").request(MediaType.APPLICATION_JSON)
+                                                     .post(Entity.entity(new GetInstancesReq(credentials), MediaType.APPLICATION_JSON), GetInstancesRsp.class);
+        if(!response.getStatus()) throw new SicException(response.getCause());
+        else return response.getInstances();
     }
     
     @Override public InstanceInfo newInstance(String machineId, Map<String, String> parameters) {
