@@ -14,7 +14,7 @@ public class InstanceInfo {
     public InstanceInfo() { }
 
     public String getInstanceId()                          { return instanceId; }
-    public void   setInctanceId(String instanceId)         { this.instanceId = instanceId; }
+    public void   setInstanceId(String instanceId)         { this.instanceId = instanceId; }
     public String getCreationTime()                        { return creationTime; }
     public void   setCreationTime(String creationTime)     { this.creationTime = creationTime; }
     public String getMachineId()                           { return machineId; }
