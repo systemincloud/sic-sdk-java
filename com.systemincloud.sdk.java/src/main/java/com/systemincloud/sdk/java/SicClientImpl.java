@@ -1,6 +1,7 @@
 package com.systemincloud.sdk.java;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -18,8 +19,11 @@ import com.systemincloud.sdk.java.msg.GetMachinesReq;
 import com.systemincloud.sdk.java.msg.GetMachinesRsp;
 import com.systemincloud.sdk.java.msg.GetModelInfoReq;
 import com.systemincloud.sdk.java.msg.GetModelInfoRsp;
+import com.systemincloud.sdk.java.msg.InstanceInfo;
 import com.systemincloud.sdk.java.msg.MachineInfo;
 import com.systemincloud.sdk.java.msg.ModelInfo;
+import com.systemincloud.sdk.java.msg.NewInstanceReq;
+import com.systemincloud.sdk.java.msg.NewInstanceRsp;
 import com.systemincloud.sdk.java.msg.NewMachineReq;
 import com.systemincloud.sdk.java.msg.NewMachineRsp;
 import com.systemincloud.sdk.java.msg.TestConnectionReq;
@@ -95,5 +99,12 @@ public class SicClientImpl implements SicClient {
                                                                           .post(Entity.entity(new GetModelInfoReq(credentials), MediaType.APPLICATION_JSON), GetModelInfoRsp.class);
         if(!response.getStatus()) throw new SicException(response.getCause());
         else return response.getModelInfo();
+    }
+    
+    @Override public InstanceInfo newInstance(String machineId, Map<String, String> parameters) {
+        NewInstanceRsp response = service.path(PATH).path("newInstance").request(MediaType.APPLICATION_JSON)
+                                                                        .post(Entity.entity(new NewInstanceReq(credentials, machineId, parameters), MediaType.APPLICATION_JSON), NewInstanceRsp.class);
+        if(!response.getStatus()) throw new SicException(response.getCause());
+        else return response.getInstance();
     }
 }
