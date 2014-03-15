@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class MachineInfo {
 
     @XmlElement private String machineId;
+    @XmlElement private String creationTime;
     @XmlElement private String provider;
     @XmlElement private String region;
     @XmlElement private String machineType;
@@ -22,6 +23,8 @@ public class MachineInfo {
     
     public String getMachineId()                           { return machineId; }
     public void   setMachineId(String machineId)           { this.machineId = machineId; }
+    public String getCreationTime()                        { return creationTime; }
+    public void   setCreationTime(String creationTime)     { this.creationTime = creationTime; }
     public String getProvider()                            { return provider; }
     public void   setProvider(String provider)             { this.provider = provider; }
     public String getRegion()                              { return region; }
