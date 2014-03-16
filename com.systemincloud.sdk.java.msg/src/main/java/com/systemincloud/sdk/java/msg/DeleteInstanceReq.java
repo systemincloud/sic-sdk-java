@@ -15,5 +15,5 @@ public class DeleteInstanceReq extends Request {
         this.instanceId = instanceId;
     }
     
-    public String getInstnaceId() { return instanceId; }
+    public String getInstanceId() { return instanceId; }
 }
