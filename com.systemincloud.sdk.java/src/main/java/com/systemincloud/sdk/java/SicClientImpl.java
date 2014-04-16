@@ -59,7 +59,7 @@ public class SicClientImpl implements SicClient {
         Client client = ClientBuilder.newBuilder()
                                      .withConfig(config)
                                      .build();
-        return client.target("https://connector.systemincloud.com");
+        return client.target(SicClientFactory.getDns());
     }
 
     @Override public TestConnectionRsp testConnection() {
